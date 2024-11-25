@@ -1,0 +1,159 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #2e2e2e;
+  color: #ffffff;
+}
+
+h1 {
+  text-align: center;
+  color: #f9a825;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#controls {
+  margin-bottom: 10px;
+}
+
+#controls button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #424242;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+#controls button:hover {
+  background-color: #616161;
+}
+
+#mode-indicator {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#game-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 48px);
+  grid-gap: 2px;
+  margin-bottom: 20px;
+}
+
+.tile {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  cursor: pointer;
+  background-color: #4caf50; /* Default grass color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #ffffff;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.tile.resource-iron {
+  background-color: #757575; /* Gray for iron ore */
+}
+
+.tile.resource-copper {
+  background-color: #a1887f; /* Copper color */
+}
+
+.tile.building-miner {
+  background-color: #6d4c41; /* Brown for miner */
+}
+
+.tile.building-smelter {
+  background-color: #f4511e; /* Orange for smelter */
+}
+
+.tile.collect-animation {
+  animation: collect 0.5s ease-in-out;
+}
+
+@keyframes collect {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.tile:hover {
+  outline: 2px solid #fff176;
+}
+
+#resources {
+  width: 300px;
+  background-color: #424242;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#resources h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+#resources ul {
+  list-style: none;
+  padding: 0;
+}
+
+#resources li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#message {
+  margin-top: 10px;
+  color: #ff8a65;
+  font-weight: bold;
+  text-align: center;
+  height: 24px;
+}
+
+#tooltip {
+  position: absolute;
+  background-color: #424242;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: none;
+  pointer-events: none;
+  font-size: 14px;
+  z-index: 1000;
+}
+
+button[data-cost]:hover::after {
+  content: attr(data-cost);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #424242;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
